@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  /* Backgrounds */
+  --color-background: oklch(0.145 0 0);
+  --color-card: oklch(0.185 0 0);
+  --color-card-hover: oklch(0.22 0 0);
+
+  /* Text */
+  --color-foreground: oklch(0.95 0 0);
+  --color-muted: oklch(0.556 0 0);
+
+  /* Status colors */
+  --color-status-up: oklch(0.723 0.219 142.5);
+  --color-status-degraded: oklch(0.795 0.184 86.0);
+  --color-status-down: oklch(0.577 0.245 27.3);
+  --color-status-maintenance: oklch(0.623 0.214 259);
+
+  /* Borders */
+  --color-border: oklch(0.274 0 0);
+  --color-border-light: oklch(0.32 0 0);
+
+  /* Accent */
+  --color-primary: oklch(0.65 0.2 264);
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Fonts */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transitions - respect reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition-property: background-color, border-color, color, opacity, transform;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-light);
+}
+
+/* Pulsing animation for status indicators */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Status dot glow effects */
+.status-dot-up {
+  box-shadow: 0 0 8px oklch(0.723 0.219 142.5 / 0.6);
+}
+
+.status-dot-degraded {
+  box-shadow: 0 0 8px oklch(0.795 0.184 86.0 / 0.6);
+}
+
+.status-dot-down {
+  box-shadow: 0 0 8px oklch(0.577 0.245 27.3 / 0.6);
+}
