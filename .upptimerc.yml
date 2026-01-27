@@ -1,0 +1,75 @@
+# Upptime Configuration - External Status Page Failover
+# This config monitors publicly accessible services from GitHub Actions
+# Generated from configs/services-registry.yaml
+#
+# Setup:
+#   1. Create new repo: ara1106/upptime
+#   2. Copy this file to the repo as .upptimerc.yml
+#   3. Enable GitHub Pages (gh-pages branch)
+#   4. Add repository secrets for notifications (optional)
+#
+# Documentation: https://upptime.js.org/docs/
+
+owner: ara1106
+repo: upptime
+
+# Status page configuration
+status-website:
+  cname: status.kero-ara.com
+  baseUrl: /
+  name: RemLab Status
+  introTitle: "**RemLab** service status"
+  introMessage: "External status monitoring for RemLab services. For detailed internal status, visit [KeroHub Status](https://kero-ara.com/status)."
+  theme: dark
+
+# Only monitor publicly accessible endpoints
+# Internal services (.rem.home) are monitored by Gatus
+sites:
+  # Identity & Portal
+  - name: KeroHub Portal
+    url: https://kero-ara.com/api/health
+    icon: https://kero-ara.com/favicon.ico
+
+  - name: KeroHub Authentication
+    url: https://kero-ara.com/api/auth/session
+    expectedStatusCodes:
+      - 200
+      - 401  # Unauthorized is expected without session
+
+  # Media Services (Public)
+  - name: Jellyfin
+    url: https://jellyfin.kero-ara.com/health
+    icon: https://jellyfin.kero-ara.com/web/favicon.ico
+
+  - name: Jellyseerr
+    url: https://jellyseerr.kero-ara.com/api/v1/status
+
+# Check every 5 minutes via GitHub Actions
+workflowSchedule:
+  uptime: "*/5 * * * *"
+  responseTime: "*/5 * * * *"
+  staticSite: "0 0 * * *"
+  summary: "0 0 * * *"
+
+# Commits configuration
+commitMessages:
+  commitMessagePrefix: "[status]"
+  statusChangeCommitMessage: "$PREFIX $NAME is $STATUS"
+  startCommitMessage: "$PREFIX Starting status monitoring"
+  readmeCommitMessage: "$PREFIX Update README"
+
+# Badge style
+commitPrefixStatus: "📊"
+
+# I18n - keep simple English
+i18n:
+  activeIncidents: Active Incidents
+  allSystemsOperational: All systems operational
+  incidentReport: Incident Report
+  activeMaintenances: Scheduled Maintenance
+  scheduledMaintenances: Upcoming Maintenance
+  noMaintenances: No scheduled maintenance
+
+# User/org info for footer
+user:
+  repo: ara1106/remlab-configs
