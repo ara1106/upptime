@@ -29,13 +29,13 @@ status-website:
     - title: Request Media
       href: https://jellyseerr.kero-ara.com
 
-  # Custom CSS for a cleaner, more modern look
+  # Custom CSS targeting Upptime's actual Svelte components
   css: |
-    /* Modern dark theme enhancements */
+    /* ===== Theme Variables ===== */
     :root {
-      --body-background-color: #0d1117;
+      --body-background-color: #0a0c10;
       --body-text-color: #e6edf3;
-      --card-background-color: #161b22;
+      --card-background-color: #151921;
       --card-border-color: #30363d;
       --nav-background-color: #010409;
       --link-color: #58a6ff;
@@ -44,123 +44,255 @@ status-website:
       --danger-color: #f85149;
     }
 
-    /* Smooth transitions */
-    * {
-      transition: background-color 0.2s ease, border-color 0.2s ease;
-    }
-
-    /* Better typography */
+    /* ===== Base Styles ===== */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg, #0a0c10 0%, #0d1117 100%);
+      min-height: 100vh;
     }
 
-    /* Card styling with subtle glow on hover */
-    .card {
-      border: 1px solid var(--card-border-color);
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-    }
-
-    .card:hover {
-      border-color: #58a6ff40;
-      box-shadow: 0 4px 12px rgba(88, 166, 255, 0.1);
-    }
-
-    /* Status badges */
-    .status-up {
-      background: linear-gradient(135deg, #238636, #2ea043);
-      border-radius: 20px;
-      padding: 4px 12px;
-    }
-
-    .status-down {
-      background: linear-gradient(135deg, #da3633, #f85149);
-      border-radius: 20px;
-      padding: 4px 12px;
-    }
-
-    /* Navigation improvements */
+    /* ===== Navigation ===== */
     nav {
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--card-border-color);
+      background: rgba(1, 4, 9, 0.8) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #21262d !important;
+      padding: 0.75rem 0;
     }
 
-    nav a {
-      padding: 8px 16px;
-      border-radius: 6px;
-      transition: background-color 0.15s ease;
+    nav .container {
+      max-width: 1200px;
     }
 
-    nav a:hover {
-      background-color: #30363d;
-    }
-
-    /* Intro section styling */
-    .intro {
-      text-align: center;
-      padding: 3rem 1rem;
-    }
-
-    .intro h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #58a6ff, #a371f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Service list improvements */
-    .service-name {
+    nav .logo {
       font-weight: 600;
       font-size: 1.1rem;
     }
 
-    /* Response time graph enhancements */
-    .chart-container {
-      border-radius: 8px;
-      overflow: hidden;
+    nav .logo img {
+      height: 32px;
+      width: auto;
+      border-radius: 6px;
     }
 
-    /* Footer styling */
-    footer {
-      opacity: 0.7;
-      font-size: 0.85rem;
-      padding: 2rem;
+    nav ul a {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      color: #8b949e;
     }
 
-    footer:hover {
-      opacity: 1;
+    nav ul a:hover {
+      background: #21262d;
+      color: #e6edf3;
     }
 
-    /* Mobile responsiveness */
-    @media (max-width: 768px) {
-      .intro h1 {
-        font-size: 1.8rem;
-      }
-
-      .card {
-        margin: 0.5rem;
-      }
+    /* ===== Header / Intro ===== */
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
     }
 
-    /* Uptime percentage highlight */
-    .uptime-percent {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--success-color);
+    header h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #58a6ff 0%, #a371f7 50%, #f778ba 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.75rem;
     }
 
-    /* All systems operational banner */
-    .all-ok {
-      background: linear-gradient(135deg, #238636, #2ea043);
-      border-radius: 8px;
+    header h1 strong {
+      font-weight: 800;
+    }
+
+    header p, header .lead {
+      color: #8b949e;
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    header a {
+      color: #58a6ff;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease;
+    }
+
+    header a:hover {
+      border-bottom-color: #58a6ff;
+    }
+
+    /* ===== Status Summary (All systems operational) ===== */
+    section > div[class*="status"] {
+      background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+      border-radius: 12px;
       padding: 1rem 1.5rem;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
+      box-shadow: 0 4px 20px rgba(46, 160, 67, 0.2);
+    }
+
+    /* ===== Live Status Section ===== */
+    .live-status, section[class*="live"] {
+      margin-top: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #e6edf3;
+      margin-bottom: 1rem;
+    }
+
+    /* Time range selector */
+    form[class*="svelte"] {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      gap: 0.25rem;
+      background: #21262d;
+      padding: 4px;
+      border-radius: 8px;
+      width: fit-content;
+    }
+
+    form label {
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      color: #8b949e;
+      font-size: 0.9rem;
+    }
+
+    form input:checked + label {
+      background: #30363d;
+      color: #e6edf3;
+    }
+
+    form label:hover {
+      color: #e6edf3;
+    }
+
+    /* ===== Service Cards ===== */
+    section article, .live-status > div > div {
+      background: #151921;
+      border: 1px solid #21262d;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    section article:hover, .live-status > div > div:hover {
+      border-color: #30363d;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* Service name links */
+    section article a, .live-status a {
+      color: #58a6ff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+
+    section article a:hover, .live-status a:hover {
+      text-decoration: underline;
+    }
+
+    /* Uptime stats */
+    section article p, .live-status p {
+      color: #8b949e;
+      margin: 0.25rem 0;
+      font-size: 0.95rem;
+    }
+
+    /* ===== Status Indicator Icons ===== */
+    [class*="up"], [class*="success"] {
+      color: #3fb950;
+    }
+
+    [class*="down"], [class*="error"] {
+      color: #f85149;
+    }
+
+    /* ===== Response Time Graphs ===== */
+    canvas, .chart, img[src*="graph"] {
+      border-radius: 8px;
+      filter: saturate(1.2);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #484f58;
+      font-size: 0.9rem;
+      border-top: 1px solid #21262d;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: #58a6ff;
+    }
+
+    /* ===== Loading Spinners ===== */
+    .loading svg {
+      opacity: 0.5;
+    }
+
+    /* ===== Mobile Responsive ===== */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+
+      nav ul {
+        gap: 0.25rem;
+      }
+
+      nav ul a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
+      }
+
+      form[class*="svelte"] {
+        flex-wrap: wrap;
+      }
+    }
+
+    /* ===== Smooth Transitions ===== */
+    *, *::before, *::after {
+      transition-property: background-color, border-color, color, box-shadow, transform;
+      transition-duration: 0.15s;
+      transition-timing-function: ease;
+    }
+
+    /* ===== Scrollbar Styling ===== */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0d1117;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #30363d;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #484f58;
     }
 
 # Only monitor publicly accessible endpoints
