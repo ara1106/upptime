@@ -17,10 +17,11 @@ sites:
   # Identity & Portal
   - name: KeroHub Portal
     url: https://kero-ara.com/api/health
-    icon: https://kero-ara.com/favicon.ico
+    icon: https://status.kero-ara.com/kero-icon.svg
 
   - name: KeroHub Auth
     url: https://kero-ara.com/api/auth/session
+    icon: https://status.kero-ara.com/kero-icon.svg
     expectedStatusCodes:
       - 200
       - 401  # Unauthorized is expected without session
@@ -28,10 +29,11 @@ sites:
   # Media Services (Public)
   - name: Jellyfin
     url: https://jellyfin.kero-ara.com/health
-    icon: https://jellyfin.kero-ara.com/web/favicon.ico
+    icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg
 
   - name: Jellyseerr
     url: https://jellyseerr.kero-ara.com/api/v1/status
+    icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyseerr.svg
 
 # Check every 5 minutes via GitHub Actions
 workflowSchedule:

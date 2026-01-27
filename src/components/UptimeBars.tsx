@@ -27,8 +27,8 @@ export function UptimeBars({ dailyUptime, className }: UptimeBarsProps) {
   };
 
   return (
-    <div className={cn("space-y-1.5", className)}>
-      <div className="flex gap-px h-7 items-stretch overflow-hidden">
+    <div className={cn("space-y-2", className)}>
+      <div className="flex gap-[2px] h-6 sm:h-7 items-stretch">
         {dailyUptime.map((day, index) => (
           <div
             key={index}
@@ -38,16 +38,16 @@ export function UptimeBars({ dailyUptime, className }: UptimeBarsProps) {
           >
             <div
               className={cn(
-                "h-full rounded-[2px] cursor-pointer",
+                "h-full rounded-sm cursor-pointer transition-all",
                 getBarColor(day.uptime),
-                hoveredIndex === index && "brightness-125"
+                hoveredIndex === index && "brightness-125 scale-y-110"
               )}
             />
             {hoveredIndex === index && (
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 pointer-events-none">
-                <div className="bg-background border border-border rounded-md px-2 py-1.5 text-xs whitespace-nowrap shadow-xl">
+                <div className="bg-card border border-border rounded-lg px-3 py-2 text-xs whitespace-nowrap shadow-xl">
                   <div className="font-medium text-foreground">{formatDate(day.date)}</div>
-                  <div className="text-muted">
+                  <div className="text-muted mt-0.5">
                     {day.uptime !== null
                       ? `${day.uptime.toFixed(2)}% uptime`
                       : "No data"}
@@ -58,7 +58,7 @@ export function UptimeBars({ dailyUptime, className }: UptimeBarsProps) {
           </div>
         ))}
       </div>
-      <div className="flex justify-between text-[10px] sm:text-xs text-muted">
+      <div className="flex justify-between text-[10px] sm:text-xs text-muted px-0.5">
         <span>{dailyUptime.length} days ago</span>
         <span>Today</span>
       </div>
@@ -69,15 +69,15 @@ export function UptimeBars({ dailyUptime, className }: UptimeBarsProps) {
 export function UptimeBarsSkeleton() {
   return (
     <div className="space-y-2">
-      <div className="flex gap-[2px] h-8">
+      <div className="flex gap-[2px] h-6 sm:h-7">
         {Array.from({ length: 90 }).map((_, i) => (
           <div
             key={i}
-            className="flex-1 min-w-[3px] bg-border rounded-sm animate-pulse"
+            className="flex-1 min-w-0 bg-muted/30 rounded-sm animate-pulse"
           />
         ))}
       </div>
-      <div className="flex justify-between text-xs text-muted">
+      <div className="flex justify-between text-[10px] sm:text-xs text-muted px-0.5">
         <span>90 days ago</span>
         <span>Today</span>
       </div>

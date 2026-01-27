@@ -22,7 +22,7 @@ function DefaultServiceIcon({ name }: { name: string }) {
 
   return (
     <svg
-      className="h-5 w-5 sm:h-6 sm:w-6 text-muted"
+      className="w-full h-full text-muted"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -44,7 +44,7 @@ function ServiceIcon({ icon, name }: { icon?: string; name: string }) {
     <img
       src={icon}
       alt=""
-      className="h-5 w-5 sm:h-6 sm:w-6 rounded object-contain"
+      className="w-full h-full rounded object-contain"
       onError={() => setError(true)}
     />
   );
@@ -74,35 +74,35 @@ export function ServiceCard({ service }: ServiceCardProps) {
   const config = statusConfig[service.status] || statusConfig.down;
 
   return (
-    <article className="rounded-xl border border-border bg-card p-4 sm:p-5 hover:bg-card-hover hover:border-border-light transition-colors">
-      {/* Header */}
-      <div className="flex items-start justify-between gap-2 sm:gap-3 mb-3">
-        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
-          <div className="shrink-0">
+    <article className="rounded-xl border border-border bg-card p-5 sm:p-6 hover:bg-card-hover hover:border-border-light transition-colors overflow-hidden">
+      {/* Header row: Icon + Name + Status */}
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-background/50 p-1.5">
             <ServiceIcon icon={service.icon} name={service.name} />
           </div>
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2">
+          <div className="min-w-0">
+            <h3 className="font-semibold text-sm sm:text-base truncate">{service.name}</h3>
+            <div className="flex items-center gap-1.5 mt-0.5">
               <span className={cn("h-2 w-2 rounded-full shrink-0", config.dot)} />
-              <h3 className="font-semibold text-sm sm:text-base truncate">{service.name}</h3>
+              <span className={cn("text-xs font-medium", config.text)}>
+                {config.label}
+              </span>
             </div>
           </div>
         </div>
-        <span className={cn("text-xs sm:text-sm font-medium shrink-0", config.text)}>
-          {config.label}
-        </span>
-      </div>
-
-      {/* Stats */}
-      <div className="flex items-center gap-3 sm:gap-4 mb-3 text-xs sm:text-sm text-muted pl-8 sm:pl-9">
-        <span>{formatResponseTime(service.time)} avg</span>
-        <span className="text-foreground font-medium">
-          {service.uptimeMonth}
-        </span>
+        <div className="text-right shrink-0">
+          <div className="text-lg sm:text-xl font-bold text-foreground">
+            {service.uptimeMonth}
+          </div>
+          <div className="text-[11px] sm:text-xs text-muted">
+            {formatResponseTime(service.time)} avg
+          </div>
+        </div>
       </div>
 
       {/* Uptime bars */}
-      <div className="mt-1">
+      <div className="pt-3 border-t border-border/50">
         <UptimeBars dailyUptime={dailyUptime} />
       </div>
     </article>
@@ -111,27 +111,26 @@ export function ServiceCard({ service }: ServiceCardProps) {
 
 export function ServiceCardSkeleton() {
   return (
-    <article className="rounded-xl border border-border bg-card p-4 sm:p-5 animate-pulse">
+    <article className="rounded-xl border border-border bg-card p-5 sm:p-6 animate-pulse overflow-hidden">
       {/* Header */}
-      <div className="flex items-start justify-between gap-3 mb-3">
+      <div className="flex items-center justify-between gap-3 mb-4">
         <div className="flex items-center gap-3">
-          <div className="h-6 w-6 rounded bg-muted shrink-0" />
-          <div className="flex items-center gap-2">
-            <div className="h-2 w-2 rounded-full bg-muted" />
-            <div className="h-5 w-28 rounded bg-muted" />
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-muted/50 shrink-0" />
+          <div>
+            <div className="h-5 w-28 rounded bg-muted/50 mb-1.5" />
+            <div className="h-3 w-20 rounded bg-muted/50" />
           </div>
         </div>
-        <div className="h-5 w-20 rounded bg-muted" />
-      </div>
-
-      {/* Stats */}
-      <div className="flex items-center gap-4 mb-3 pl-9">
-        <div className="h-4 w-14 rounded bg-muted" />
-        <div className="h-4 w-16 rounded bg-muted" />
+        <div className="text-right">
+          <div className="h-6 w-16 rounded bg-muted/50 mb-1" />
+          <div className="h-3 w-14 rounded bg-muted/50" />
+        </div>
       </div>
 
       {/* Uptime bars */}
-      <UptimeBarsSkeleton />
+      <div className="pt-3 border-t border-border/50">
+        <UptimeBarsSkeleton />
+      </div>
     </article>
   );
 }
