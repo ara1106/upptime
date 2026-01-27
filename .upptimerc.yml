@@ -1,12 +1,5 @@
 # Upptime Configuration - External Status Page Failover
 # This config monitors publicly accessible services from GitHub Actions
-# Generated from configs/services-registry.yaml
-#
-# Setup:
-#   1. Create new repo: ara1106/upptime
-#   2. Copy this file to the repo as .upptimerc.yml
-#   3. Enable GitHub Pages (gh-pages branch)
-#   4. Add repository secrets for notifications (optional)
 #
 # Documentation: https://upptime.js.org/docs/
 
@@ -18,9 +11,157 @@ status-website:
   cname: status.kero-ara.com
   baseUrl: /
   name: RemLab Status
-  introTitle: "**RemLab** service status"
-  introMessage: "External status monitoring for RemLab services. For detailed internal status, visit [KeroHub Status](https://kero-ara.com/status)."
+  logoUrl: https://kero-ara.com/logo.png
   theme: dark
+
+  # Clean intro with gradient text effect
+  introTitle: "**RemLab** Status"
+  introMessage: |
+    External monitoring for public-facing services.
+    For detailed internal status, visit [KeroHub](https://kero-ara.com/status).
+
+  # Navigation links
+  navbar:
+    - title: KeroHub
+      href: https://kero-ara.com
+    - title: Jellyfin
+      href: https://jellyfin.kero-ara.com
+    - title: Request Media
+      href: https://jellyseerr.kero-ara.com
+
+  # Custom CSS for a cleaner, more modern look
+  css: |
+    /* Modern dark theme enhancements */
+    :root {
+      --body-background-color: #0d1117;
+      --body-text-color: #e6edf3;
+      --card-background-color: #161b22;
+      --card-border-color: #30363d;
+      --nav-background-color: #010409;
+      --link-color: #58a6ff;
+      --success-color: #3fb950;
+      --warning-color: #d29922;
+      --danger-color: #f85149;
+    }
+
+    /* Smooth transitions */
+    * {
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    /* Better typography */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Card styling with subtle glow on hover */
+    .card {
+      border: 1px solid var(--card-border-color);
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    }
+
+    .card:hover {
+      border-color: #58a6ff40;
+      box-shadow: 0 4px 12px rgba(88, 166, 255, 0.1);
+    }
+
+    /* Status badges */
+    .status-up {
+      background: linear-gradient(135deg, #238636, #2ea043);
+      border-radius: 20px;
+      padding: 4px 12px;
+    }
+
+    .status-down {
+      background: linear-gradient(135deg, #da3633, #f85149);
+      border-radius: 20px;
+      padding: 4px 12px;
+    }
+
+    /* Navigation improvements */
+    nav {
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border-color);
+    }
+
+    nav a {
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background-color 0.15s ease;
+    }
+
+    nav a:hover {
+      background-color: #30363d;
+    }
+
+    /* Intro section styling */
+    .intro {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .intro h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #58a6ff, #a371f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Service list improvements */
+    .service-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    /* Response time graph enhancements */
+    .chart-container {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* Footer styling */
+    footer {
+      opacity: 0.7;
+      font-size: 0.85rem;
+      padding: 2rem;
+    }
+
+    footer:hover {
+      opacity: 1;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .intro h1 {
+        font-size: 1.8rem;
+      }
+
+      .card {
+        margin: 0.5rem;
+      }
+    }
+
+    /* Uptime percentage highlight */
+    .uptime-percent {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--success-color);
+    }
+
+    /* All systems operational banner */
+    .all-ok {
+      background: linear-gradient(135deg, #238636, #2ea043);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
 # Only monitor publicly accessible endpoints
 # Internal services (.rem.home) are monitored by Gatus
@@ -30,7 +171,7 @@ sites:
     url: https://kero-ara.com/api/health
     icon: https://kero-ara.com/favicon.ico
 
-  - name: KeroHub Authentication
+  - name: KeroHub Auth
     url: https://kero-ara.com/api/auth/session
     expectedStatusCodes:
       - 200
@@ -58,10 +199,7 @@ commitMessages:
   startCommitMessage: "$PREFIX Starting status monitoring"
   readmeCommitMessage: "$PREFIX Update README"
 
-# Badge style
-commitPrefixStatus: "📊"
-
-# I18n - keep simple English
+# I18n - cleaner labels
 i18n:
   activeIncidents: Active Incidents
   allSystemsOperational: All systems operational
@@ -69,7 +207,10 @@ i18n:
   activeMaintenances: Scheduled Maintenance
   scheduledMaintenances: Upcoming Maintenance
   noMaintenances: No scheduled maintenance
+  up: Operational
+  down: Down
+  degraded: Degraded
 
-# User/org info for footer
+# User/org info
 user:
   repo: ara1106/remlab-configs
