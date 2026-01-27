@@ -46,24 +46,24 @@ export function StatusBanner({ status, lastUpdated }: StatusBannerProps) {
   return (
     <div
       className={cn(
-        "rounded-lg border p-6",
+        "rounded-lg border p-4 sm:p-6 overflow-hidden",
         config.bg,
         config.border
       )}
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <span
           className={cn(
-            "h-3 w-3 rounded-full",
+            "h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full shrink-0",
             config.dot,
             status === "up" && "animate-pulse-slow"
           )}
         />
-        <h2 className={cn("text-xl font-semibold", config.text)}>
+        <h2 className={cn("text-lg sm:text-xl font-semibold", config.text)}>
           {getStatusLabel(status)}
         </h2>
       </div>
-      <p className="mt-2 text-sm text-muted">
+      <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-muted">
         Last checked {getRelativeTime(lastUpdated)}
       </p>
     </div>

@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  /* Backgrounds */
-  --color-background: oklch(0.145 0 0);
-  --color-card: oklch(0.185 0 0);
+  /* Backgrounds - more contrast between bg and cards */
+  --color-background: oklch(0.12 0 0);
+  --color-card: oklch(0.18 0 0);
   --color-card-hover: oklch(0.22 0 0);
 
   /* Text */
   --color-foreground: oklch(0.95 0 0);
-  --color-muted: oklch(0.556 0 0);
+  --color-muted: oklch(0.6 0 0);
 
-  /* Status colors */
-  --color-status-up: oklch(0.723 0.219 142.5);
-  --color-status-degraded: oklch(0.795 0.184 86.0);
-  --color-status-down: oklch(0.577 0.245 27.3);
-  --color-status-maintenance: oklch(0.623 0.214 259);
+  /* Status colors - slightly more vibrant */
+  --color-status-up: oklch(0.75 0.22 145);
+  --color-status-degraded: oklch(0.8 0.19 85);
+  --color-status-down: oklch(0.65 0.25 25);
+  --color-status-maintenance: oklch(0.65 0.22 260);
 
-  /* Borders */
-  --color-border: oklch(0.274 0 0);
-  --color-border-light: oklch(0.32 0 0);
+  /* Borders - more visible */
+  --color-border: oklch(0.3 0 0);
+  --color-border-light: oklch(0.38 0 0);
 
   /* Accent */
   --color-primary: oklch(0.65 0.2 264);

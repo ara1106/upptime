@@ -53,11 +53,11 @@ export default function StatusPage() {
   return (
     <main>
       {/* Header */}
-      <header className="mb-8">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center">
+      <header className="mb-6 sm:mb-8">
+        <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+          <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center shrink-0">
             <svg
-              className="h-6 w-6 text-foreground"
+              className="h-5 w-5 sm:h-6 sm:w-6 text-foreground"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -70,9 +70,9 @@ export default function StatusPage() {
               />
             </svg>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold">RemLab Status</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">RemLab Status</h1>
         </div>
-        <p className="text-muted">
+        <p className="text-muted text-sm sm:text-base">
           Real-time status and historical uptime for RemLab services
         </p>
       </header>
@@ -106,7 +106,7 @@ export default function StatusPage() {
       )}
 
       {/* Status Banner */}
-      <section className="mb-8">
+      <section className="mb-6 sm:mb-8">
         {loading ? (
           <StatusBannerSkeleton />
         ) : (
@@ -115,9 +115,9 @@ export default function StatusPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="mb-8">
-        <h2 className="text-lg font-semibold mb-4">Services</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
+      <section className="mb-6 sm:mb-8">
+        <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Services</h2>
+        <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
           {loading
             ? Array.from({ length: 4 }).map((_, i) => (
                 <ServiceCardSkeleton key={i} />
@@ -129,7 +129,7 @@ export default function StatusPage() {
       </section>
 
       {/* Incidents */}
-      <section className="mb-8">
+      <section className="mb-6 sm:mb-8">
         {loading ? (
           <IncidentTimelineSkeleton />
         ) : (
@@ -138,14 +138,14 @@ export default function StatusPage() {
       </section>
 
       {/* Footer */}
-      <footer className="pt-8 border-t border-border text-center text-sm text-muted">
+      <footer className="pt-6 sm:pt-8 border-t border-border text-center text-xs sm:text-sm text-muted/80">
         <p>
           Powered by{" "}
           <a
             href="https://upptime.js.org"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:underline"
+            className="text-foreground/70 hover:text-foreground hover:underline"
           >
             Upptime
           </a>
@@ -154,7 +154,7 @@ export default function StatusPage() {
             href="https://kero-ara.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:underline"
+            className="text-foreground/70 hover:text-foreground hover:underline"
           >
             KeroHub
           </a>

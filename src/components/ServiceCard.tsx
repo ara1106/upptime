@@ -32,20 +32,20 @@ export function ServiceCard({ service }: ServiceCardProps) {
   const config = statusConfig[service.status] || statusConfig.down;
 
   return (
-    <div className="rounded-lg border border-border bg-card p-5 hover:bg-card-hover hover:border-border-light transition-colors">
+    <div className="rounded-lg border border-border bg-card p-4 sm:p-5 hover:bg-card-hover hover:border-border-light transition-colors overflow-hidden">
       {/* Header */}
-      <div className="flex items-start justify-between gap-4 mb-4">
-        <div className="flex items-center gap-3 min-w-0">
+      <div className="flex items-start justify-between gap-2 sm:gap-4 mb-3">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
           <span className={cn("h-2.5 w-2.5 rounded-full shrink-0", config.dot)} />
-          <h3 className="font-semibold truncate">{service.name}</h3>
+          <h3 className="font-semibold text-sm sm:text-base truncate">{service.name}</h3>
         </div>
-        <span className={cn("text-sm font-medium shrink-0", config.text)}>
+        <span className={cn("text-xs sm:text-sm font-medium shrink-0", config.text)}>
           {config.label}
         </span>
       </div>
 
       {/* Stats */}
-      <div className="flex items-center gap-4 mb-4 text-sm text-muted">
+      <div className="flex items-center gap-3 sm:gap-4 mb-3 text-xs sm:text-sm text-muted">
         <span>{formatResponseTime(service.time)} avg</span>
         <span className="text-foreground font-medium">
           {service.uptimeMonth}

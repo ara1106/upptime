@@ -17,11 +17,11 @@ export function IncidentTimeline({ incidents }: IncidentTimelineProps) {
 
   if (recentIncidents.length === 0) {
     return (
-      <div className="rounded-lg border border-border bg-card p-6">
-        <h2 className="text-lg font-semibold mb-4">Recent Incidents</h2>
-        <div className="flex items-center gap-3 text-muted">
+      <div className="rounded-lg border border-border bg-card p-4 sm:p-6 overflow-hidden">
+        <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Recent Incidents</h2>
+        <div className="flex items-center gap-2 sm:gap-3 text-muted text-sm">
           <svg
-            className="h-5 w-5 text-status-up"
+            className="h-4 w-4 sm:h-5 sm:w-5 text-status-up shrink-0"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -40,9 +40,9 @@ export function IncidentTimeline({ incidents }: IncidentTimelineProps) {
   }
 
   return (
-    <div className="rounded-lg border border-border bg-card p-6">
-      <h2 className="text-lg font-semibold mb-4">Recent Incidents</h2>
-      <div className="space-y-4">
+    <div className="rounded-lg border border-border bg-card p-4 sm:p-6 overflow-hidden">
+      <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Recent Incidents</h2>
+      <div className="space-y-3 sm:space-y-4">
         {recentIncidents.map((incident) => (
           <IncidentItem key={incident.id} incident={incident} />
         ))}

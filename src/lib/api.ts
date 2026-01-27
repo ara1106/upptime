@@ -67,11 +67,18 @@ export interface DailyUptime {
 
 export function calculateDailyUptime(
   dailyMinutesDown: Record<string, number>,
-  days: number = 90
+  days: number = 90,
+  serviceStartDate?: Date
 ): DailyUptime[] {
   const result: DailyUptime[] = [];
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+
+  // If we have any data, find the earliest date we have records for
+  const recordedDates = Object.keys(dailyMinutesDown).sort();
+  const earliestRecord = recordedDates.length > 0
+    ? new Date(recordedDates[0])
+    : serviceStartDate || today;
 
   for (let i = days - 1; i >= 0; i--) {
     const date = new Date(today);
@@ -79,10 +86,20 @@ export function calculateDailyUptime(
     const dateKey = date.toISOString().split("T")[0];
 
     const minutesDown = dailyMinutesDown[dateKey];
-    const uptime =
-      minutesDown !== undefined
-        ? Math.max(0, ((1440 - minutesDown) / 1440) * 100)
-        : null;
+
+    // Determine uptime:
+    // - If we have a record for this date, calculate from minutesDown
+    // - If date is before our earliest record, show as "no data"
+    // - If date is after earliest record but no entry, assume 100% (no downtime recorded)
+    let uptime: number | null;
+
+    if (minutesDown !== undefined) {
+      uptime = Math.max(0, ((1440 - minutesDown) / 1440) * 100);
+    } else if (date < earliestRecord) {
+      uptime = null; // No data before monitoring started
+    } else {
+      uptime = 100; // No downtime recorded = 100% uptime
+    }
 
     result.push({ date, uptime });
   }
