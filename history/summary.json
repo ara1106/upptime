@@ -18,21 +18,21 @@
     "dailyMinutesDown": {}
   },
   {
-    "name": "KeroHub Authentication",
+    "name": "KeroHub Auth",
     "url": "https://kero-ara.com/api/auth/session",
     "icon": "https://icons.duckduckgo.com/ip3/kero-ara.com.ico",
-    "slug": "kero-hub-authentication",
+    "slug": "kero-hub-auth",
     "status": "up",
     "uptime": "100.00%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 123,
-    "timeDay": 123,
-    "timeWeek": 123,
-    "timeMonth": 123,
-    "timeYear": 123,
+    "time": 166,
+    "timeDay": 166,
+    "timeWeek": 166,
+    "timeMonth": 166,
+    "timeYear": 166,
     "dailyMinutesDown": {}
   },
   {
