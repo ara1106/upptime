@@ -34,7 +34,7 @@ export interface Incident {
 
 export async function fetchServiceStatuses(): Promise<ServiceStatus[]> {
   const response = await fetch(
-    `https://raw.githubusercontent.com/${OWNER}/${REPO}/master/history/summary.json`,
+    `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/history/summary.json`,
     { next: { revalidate: 60 } }
   );
 
