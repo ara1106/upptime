@@ -295,6 +295,291 @@ status-website:
       background: #484f58;
     }
 
+    /* ===== Uptime History Bars ===== */
+    .uptime-bars {
+      display: flex;
+      gap: 2px;
+      margin: 0.75rem 0;
+      height: 28px;
+      align-items: stretch;
+    }
+
+    .uptime-bar {
+      flex: 1;
+      min-width: 3px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .uptime-bar:hover {
+      transform: scaleY(1.15);
+      filter: brightness(1.2);
+    }
+
+    .uptime-bar.up {
+      background: linear-gradient(180deg, #3fb950 0%, #238636 100%);
+    }
+
+    .uptime-bar.partial {
+      background: linear-gradient(180deg, #d29922 0%, #9e6a03 100%);
+    }
+
+    .uptime-bar.down {
+      background: linear-gradient(180deg, #f85149 0%, #da3633 100%);
+    }
+
+    .uptime-bar.no-data {
+      background: #30363d;
+    }
+
+    .uptime-bar-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1c2128;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .uptime-bar:hover .uptime-bar-tooltip {
+      opacity: 1;
+    }
+
+    .uptime-bar-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #30363d;
+    }
+
+    .uptime-summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #8b949e;
+      margin-top: 0.5rem;
+    }
+
+    .uptime-percent-large {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #3fb950;
+      margin-right: 0.5rem;
+    }
+
+    .uptime-percent-large.degraded {
+      color: #d29922;
+    }
+
+    .uptime-percent-large.down {
+      color: #f85149;
+    }
+
+    /* Status indicator dot */
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .status-dot.up {
+      background: #3fb950;
+      box-shadow: 0 0 8px rgba(63, 185, 80, 0.6);
+    }
+
+    .status-dot.down {
+      background: #f85149;
+      box-shadow: 0 0 8px rgba(248, 81, 73, 0.6);
+      animation: pulse-danger 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    @keyframes pulse-danger {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+
+    /* Enhanced service card layout */
+    .service-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+  # Custom JavaScript to add uptime history bars
+  js: |
+    // Wait for page to load and data to be fetched
+    const OWNER = 'ara1106';
+    const REPO = 'upptime';
+
+    async function fetchUptimeData() {
+      try {
+        // Fetch the summary.json from the repo
+        const response = await fetch(`https://raw.githubusercontent.com/${OWNER}/${REPO}/master/history/summary.json`);
+        if (!response.ok) return null;
+        return await response.json();
+      } catch (e) {
+        console.log('Could not fetch uptime data:', e);
+        return null;
+      }
+    }
+
+    function createUptimeBars(dailyData, days = 30) {
+      const container = document.createElement('div');
+      container.className = 'uptime-bars';
+
+      // Pad or trim to exactly 'days' entries
+      const data = dailyData.slice(-days);
+      while (data.length < days) {
+        data.unshift({ uptime: null });
+      }
+
+      data.forEach((day, i) => {
+        const bar = document.createElement('div');
+        bar.className = 'uptime-bar';
+
+        if (day.uptime === null || day.uptime === undefined) {
+          bar.classList.add('no-data');
+        } else if (day.uptime >= 99.9) {
+          bar.classList.add('up');
+        } else if (day.uptime >= 95) {
+          bar.classList.add('partial');
+        } else {
+          bar.classList.add('down');
+        }
+
+        // Tooltip
+        const tooltip = document.createElement('div');
+        tooltip.className = 'uptime-bar-tooltip';
+        const date = new Date();
+        date.setDate(date.getDate() - (days - 1 - i));
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        tooltip.textContent = day.uptime !== null
+          ? `${dateStr}: ${day.uptime.toFixed(2)}%`
+          : `${dateStr}: No data`;
+        bar.appendChild(tooltip);
+
+        container.appendChild(bar);
+      });
+
+      return container;
+    }
+
+    function getUptimeClass(uptime) {
+      if (uptime >= 99.9) return '';
+      if (uptime >= 95) return 'degraded';
+      return 'down';
+    }
+
+    async function enhanceStatusPage() {
+      // Wait a bit for Svelte to render
+      await new Promise(r => setTimeout(r, 1500));
+
+      const data = await fetchUptimeData();
+      if (!data) return;
+
+      // Find all service sections in live-status
+      const liveStatus = document.querySelector('.live-status');
+      if (!liveStatus) return;
+
+      // Wait for content to load
+      await new Promise(r => setTimeout(r, 500));
+
+      // Find service entries
+      const serviceLinks = liveStatus.querySelectorAll('a[href*="/history/"]');
+
+      serviceLinks.forEach(link => {
+        const serviceName = link.textContent.trim();
+        const serviceData = data.find(s => s.name === serviceName);
+
+        if (serviceData && serviceData.dailyMinutesDown) {
+          const parent = link.closest('div') || link.parentElement;
+
+          // Check if we already added bars
+          if (parent.querySelector('.uptime-bars')) return;
+
+          // Create daily uptime from minutesDown (assuming 1440 minutes per day)
+          const dailyData = Object.entries(serviceData.dailyMinutesDown || {})
+            .sort(([a], [b]) => a.localeCompare(b))
+            .map(([date, minutesDown]) => ({
+              date,
+              uptime: Math.max(0, ((1440 - minutesDown) / 1440) * 100)
+            }));
+
+          const bars = createUptimeBars(dailyData, 30);
+
+          // Insert after the link
+          if (link.nextSibling) {
+            parent.insertBefore(bars, link.nextSibling.nextSibling);
+          } else {
+            parent.appendChild(bars);
+          }
+
+          // Add summary row
+          const summary = document.createElement('div');
+          summary.className = 'uptime-summary';
+          summary.innerHTML = `<span>30 days ago</span><span>Today</span>`;
+          parent.appendChild(summary);
+        }
+      });
+
+      // Add pulsing status dots to service names
+      const statusIcons = document.querySelectorAll('[class*="up"], [class*="success"]');
+      statusIcons.forEach(icon => {
+        if (icon.tagName === 'svg' || icon.closest('svg')) {
+          const dot = document.createElement('span');
+          dot.className = 'status-dot up';
+          icon.parentElement.insertBefore(dot, icon);
+          icon.style.display = 'none';
+        }
+      });
+    }
+
+    // Run enhancement
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', enhanceStatusPage);
+    } else {
+      enhanceStatusPage();
+    }
+
+    // Also run on route changes (SPA navigation)
+    const observer = new MutationObserver(() => {
+      if (document.querySelector('.live-status') && !document.querySelector('.uptime-bars')) {
+        enhanceStatusPage();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
 # Only monitor publicly accessible endpoints
 # Internal services (.rem.home) are monitored by Gatus
 sites:
