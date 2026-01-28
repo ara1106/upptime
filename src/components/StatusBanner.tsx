@@ -46,24 +46,26 @@ export function StatusBanner({ status, lastUpdated }: StatusBannerProps) {
   return (
     <div
       className={cn(
-        "rounded-lg border p-4 sm:p-6 overflow-hidden",
+        "rounded-xl border-2 overflow-hidden",
         config.bg,
         config.border
       )}
+      style={{ padding: "1.25rem" }}
     >
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className="flex items-center" style={{ gap: "0.75rem" }}>
         <span
           className={cn(
-            "h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full shrink-0",
+            "rounded-full shrink-0",
             config.dot,
             status === "up" && "animate-pulse-slow"
           )}
+          style={{ width: "0.75rem", height: "0.75rem" }}
         />
-        <h2 className={cn("text-lg sm:text-xl font-semibold", config.text)}>
+        <h2 className={cn("text-xl font-semibold", config.text)}>
           {getStatusLabel(status)}
         </h2>
       </div>
-      <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-muted">
+      <p className="text-sm text-muted" style={{ marginTop: "0.5rem" }}>
         Last checked {getRelativeTime(lastUpdated)}
       </p>
     </div>
@@ -72,12 +74,15 @@ export function StatusBanner({ status, lastUpdated }: StatusBannerProps) {
 
 export function StatusBannerSkeleton() {
   return (
-    <div className="rounded-lg border border-border bg-card p-6 animate-pulse">
-      <div className="flex items-center gap-3">
-        <div className="h-3 w-3 rounded-full bg-muted" />
-        <div className="h-6 w-48 rounded bg-muted" />
+    <div
+      className="rounded-xl border-2 border-border bg-card animate-pulse"
+      style={{ padding: "1.25rem" }}
+    >
+      <div className="flex items-center" style={{ gap: "0.75rem" }}>
+        <div className="rounded-full bg-muted" style={{ width: "0.75rem", height: "0.75rem" }} />
+        <div className="rounded bg-muted" style={{ height: "1.5rem", width: "12rem" }} />
       </div>
-      <div className="mt-2 h-4 w-32 rounded bg-muted" />
+      <div className="rounded bg-muted" style={{ marginTop: "0.5rem", height: "1rem", width: "8rem" }} />
     </div>
   );
 }

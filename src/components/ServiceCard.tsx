@@ -74,16 +74,22 @@ export function ServiceCard({ service }: ServiceCardProps) {
   const config = statusConfig[service.status] || statusConfig.down;
 
   return (
-    <article className="rounded-xl border border-border bg-card p-5 sm:p-6 hover:bg-card-hover hover:border-border-light transition-colors overflow-hidden">
+    <article
+      className="rounded-xl border-2 border-border bg-card hover:bg-card-hover hover:border-border-light transition-colors overflow-hidden"
+      style={{ padding: "1.25rem" }}
+    >
       {/* Header row: Icon + Name + Status */}
-      <div className="flex items-center justify-between gap-3 mb-4">
-        <div className="flex items-center gap-3 min-w-0">
-          <div className="shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-background/50 p-1.5">
+      <div className="flex items-center justify-between mb-4" style={{ gap: "0.75rem" }}>
+        <div className="flex items-center min-w-0" style={{ gap: "0.75rem" }}>
+          <div
+            className="shrink-0 flex items-center justify-center rounded-lg bg-background/50"
+            style={{ width: "2.5rem", height: "2.5rem", padding: "0.375rem" }}
+          >
             <ServiceIcon icon={service.icon} name={service.name} />
           </div>
           <div className="min-w-0">
-            <h3 className="font-semibold text-sm sm:text-base truncate">{service.name}</h3>
-            <div className="flex items-center gap-1.5 mt-0.5">
+            <h3 className="font-semibold text-base truncate">{service.name}</h3>
+            <div className="flex items-center mt-1" style={{ gap: "0.375rem" }}>
               <span className={cn("h-2 w-2 rounded-full shrink-0", config.dot)} />
               <span className={cn("text-xs font-medium", config.text)}>
                 {config.label}
@@ -92,17 +98,17 @@ export function ServiceCard({ service }: ServiceCardProps) {
           </div>
         </div>
         <div className="text-right shrink-0">
-          <div className="text-lg sm:text-xl font-bold text-foreground">
+          <div className="text-xl font-bold text-foreground">
             {service.uptimeMonth}
           </div>
-          <div className="text-[11px] sm:text-xs text-muted">
+          <div className="text-xs text-muted">
             {formatResponseTime(service.time)} avg
           </div>
         </div>
       </div>
 
       {/* Uptime bars */}
-      <div className="pt-3 border-t border-border/50">
+      <div className="border-t border-border/50" style={{ paddingTop: "0.75rem" }}>
         <UptimeBars dailyUptime={dailyUptime} />
       </div>
     </article>
@@ -111,24 +117,30 @@ export function ServiceCard({ service }: ServiceCardProps) {
 
 export function ServiceCardSkeleton() {
   return (
-    <article className="rounded-xl border border-border bg-card p-5 sm:p-6 animate-pulse overflow-hidden">
+    <article
+      className="rounded-xl border-2 border-border bg-card animate-pulse overflow-hidden"
+      style={{ padding: "1.25rem" }}
+    >
       {/* Header */}
-      <div className="flex items-center justify-between gap-3 mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-muted/50 shrink-0" />
+      <div className="flex items-center justify-between mb-4" style={{ gap: "0.75rem" }}>
+        <div className="flex items-center" style={{ gap: "0.75rem" }}>
+          <div
+            className="rounded-lg bg-muted/50 shrink-0"
+            style={{ width: "2.5rem", height: "2.5rem" }}
+          />
           <div>
-            <div className="h-5 w-28 rounded bg-muted/50 mb-1.5" />
-            <div className="h-3 w-20 rounded bg-muted/50" />
+            <div className="rounded bg-muted/50 mb-1.5" style={{ height: "1.25rem", width: "7rem" }} />
+            <div className="rounded bg-muted/50" style={{ height: "0.75rem", width: "5rem" }} />
           </div>
         </div>
         <div className="text-right">
-          <div className="h-6 w-16 rounded bg-muted/50 mb-1" />
-          <div className="h-3 w-14 rounded bg-muted/50" />
+          <div className="rounded bg-muted/50 mb-1" style={{ height: "1.5rem", width: "4rem" }} />
+          <div className="rounded bg-muted/50" style={{ height: "0.75rem", width: "3.5rem" }} />
         </div>
       </div>
 
       {/* Uptime bars */}
-      <div className="pt-3 border-t border-border/50">
+      <div className="border-t border-border/50" style={{ paddingTop: "0.75rem" }}>
         <UptimeBarsSkeleton />
       </div>
     </article>

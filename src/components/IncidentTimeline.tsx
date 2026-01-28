@@ -17,15 +17,19 @@ export function IncidentTimeline({ incidents }: IncidentTimelineProps) {
 
   if (recentIncidents.length === 0) {
     return (
-      <div className="rounded-lg border border-border bg-card p-4 sm:p-6 overflow-hidden">
-        <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Recent Incidents</h2>
-        <div className="flex items-center gap-2 sm:gap-3 text-muted text-sm">
+      <div
+        className="rounded-xl border-2 border-border bg-card overflow-hidden"
+        style={{ padding: "1.25rem" }}
+      >
+        <h2 className="text-lg font-semibold" style={{ marginBottom: "1rem" }}>Recent Incidents</h2>
+        <div className="flex items-center text-muted text-sm" style={{ gap: "0.75rem" }}>
           <svg
-            className="h-4 w-4 sm:h-5 sm:w-5 text-status-up shrink-0"
+            className="text-status-up shrink-0"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth={2}
+            style={{ width: "1.25rem", height: "1.25rem" }}
           >
             <path
               strokeLinecap="round"
@@ -40,9 +44,12 @@ export function IncidentTimeline({ incidents }: IncidentTimelineProps) {
   }
 
   return (
-    <div className="rounded-lg border border-border bg-card p-4 sm:p-6 overflow-hidden">
-      <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Recent Incidents</h2>
-      <div className="space-y-3 sm:space-y-4">
+    <div
+      className="rounded-xl border-2 border-border bg-card overflow-hidden"
+      style={{ padding: "1.25rem" }}
+    >
+      <h2 className="text-lg font-semibold" style={{ marginBottom: "1rem" }}>Recent Incidents</h2>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         {recentIncidents.map((incident) => (
           <IncidentItem key={incident.id} incident={incident} />
         ))}
@@ -91,20 +98,27 @@ function IncidentItem({ incident }: { incident: Incident }) {
       href={incident.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block p-4 -mx-2 rounded-md hover:bg-card-hover transition-colors"
+      className="block rounded-lg hover:bg-card-hover transition-colors"
+      style={{ padding: "0.75rem" }}
     >
-      <div className="flex items-start gap-3">
-        <span className={cn("h-2 w-2 rounded-full mt-2 shrink-0", config.dot)} />
+      <div className="flex items-start" style={{ gap: "0.75rem" }}>
+        <span
+          className={cn("rounded-full shrink-0", config.dot)}
+          style={{ width: "0.5rem", height: "0.5rem", marginTop: "0.5rem" }}
+        />
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center flex-wrap" style={{ gap: "0.5rem" }}>
             <span className="font-medium">{incident.title}</span>
             {isResolved && (
-              <span className="text-xs px-2 py-0.5 rounded-full bg-status-up/20 text-status-up">
+              <span
+                className="text-xs rounded-full bg-status-up/20 text-status-up"
+                style={{ padding: "0.125rem 0.5rem" }}
+              >
                 Resolved
               </span>
             )}
           </div>
-          <div className="text-sm text-muted mt-1">
+          <div className="text-sm text-muted" style={{ marginTop: "0.25rem" }}>
             {formatDateLong(created)} &middot; {getRelativeTime(created)}
           </div>
         </div>
@@ -115,15 +129,21 @@ function IncidentItem({ incident }: { incident: Incident }) {
 
 export function IncidentTimelineSkeleton() {
   return (
-    <div className="rounded-lg border border-border bg-card p-6 animate-pulse">
-      <div className="h-6 w-40 rounded bg-muted mb-4" />
-      <div className="space-y-4">
+    <div
+      className="rounded-xl border-2 border-border bg-card animate-pulse"
+      style={{ padding: "1.25rem" }}
+    >
+      <div className="rounded bg-muted" style={{ height: "1.5rem", width: "10rem", marginBottom: "1rem" }} />
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         {[1, 2].map((i) => (
-          <div key={i} className="flex items-start gap-3 p-4">
-            <div className="h-2 w-2 rounded-full bg-muted mt-2" />
-            <div className="flex-1 space-y-2">
-              <div className="h-5 w-3/4 rounded bg-muted" />
-              <div className="h-4 w-1/2 rounded bg-muted" />
+          <div key={i} className="flex items-start" style={{ gap: "0.75rem", padding: "0.75rem" }}>
+            <div
+              className="rounded-full bg-muted shrink-0"
+              style={{ width: "0.5rem", height: "0.5rem", marginTop: "0.5rem" }}
+            />
+            <div className="flex-1" style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <div className="rounded bg-muted" style={{ height: "1.25rem", width: "75%" }} />
+              <div className="rounded bg-muted" style={{ height: "1rem", width: "50%" }} />
             </div>
           </div>
         ))}

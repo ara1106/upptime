@@ -27,27 +27,41 @@ export function UptimeBars({ dailyUptime, className }: UptimeBarsProps) {
   };
 
   return (
-    <div className={cn("space-y-2", className)}>
-      <div className="flex gap-[2px] h-6 sm:h-7 items-stretch">
+    <div className={className} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+      <div style={{ display: "flex", gap: "2px", height: "1.75rem", alignItems: "stretch" }}>
         {dailyUptime.map((day, index) => (
           <div
             key={index}
-            className="relative flex-1 min-w-0"
+            className="relative"
+            style={{ flex: 1, minWidth: 0 }}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <div
               className={cn(
-                "h-full rounded-sm cursor-pointer transition-all",
+                "rounded-sm cursor-pointer transition-all",
                 getBarColor(day.uptime),
                 hoveredIndex === index && "brightness-125 scale-y-110"
               )}
+              style={{ height: "100%" }}
             />
             {hoveredIndex === index && (
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 pointer-events-none">
-                <div className="bg-card border border-border rounded-lg px-3 py-2 text-xs whitespace-nowrap shadow-xl">
+              <div
+                className="absolute pointer-events-none"
+                style={{
+                  bottom: "100%",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  marginBottom: "0.5rem",
+                  zIndex: 50,
+                }}
+              >
+                <div
+                  className="bg-card border border-border rounded-lg shadow-xl whitespace-nowrap"
+                  style={{ padding: "0.5rem 0.75rem", fontSize: "0.75rem" }}
+                >
                   <div className="font-medium text-foreground">{formatDate(day.date)}</div>
-                  <div className="text-muted mt-0.5">
+                  <div className="text-muted" style={{ marginTop: "0.125rem" }}>
                     {day.uptime !== null
                       ? `${day.uptime.toFixed(2)}% uptime`
                       : "No data"}
@@ -58,7 +72,10 @@ export function UptimeBars({ dailyUptime, className }: UptimeBarsProps) {
           </div>
         ))}
       </div>
-      <div className="flex justify-between text-[10px] sm:text-xs text-muted px-0.5">
+      <div
+        className="text-muted"
+        style={{ display: "flex", justifyContent: "space-between", fontSize: "0.625rem", padding: "0 0.125rem" }}
+      >
         <span>{dailyUptime.length} days ago</span>
         <span>Today</span>
       </div>
@@ -68,16 +85,20 @@ export function UptimeBars({ dailyUptime, className }: UptimeBarsProps) {
 
 export function UptimeBarsSkeleton() {
   return (
-    <div className="space-y-2">
-      <div className="flex gap-[2px] h-6 sm:h-7">
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+      <div style={{ display: "flex", gap: "2px", height: "1.75rem" }}>
         {Array.from({ length: 90 }).map((_, i) => (
           <div
             key={i}
-            className="flex-1 min-w-0 bg-muted/30 rounded-sm animate-pulse"
+            className="bg-muted/30 rounded-sm animate-pulse"
+            style={{ flex: 1, minWidth: 0 }}
           />
         ))}
       </div>
-      <div className="flex justify-between text-[10px] sm:text-xs text-muted px-0.5">
+      <div
+        className="text-muted"
+        style={{ display: "flex", justifyContent: "space-between", fontSize: "0.625rem", padding: "0 0.125rem" }}
+      >
         <span>90 days ago</span>
         <span>Today</span>
       </div>
