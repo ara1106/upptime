@@ -80,7 +80,8 @@ function ServiceIcon({ icon, name }: { icon?: string; name: string }) {
 }
 
 export function ServiceCard({ service }: ServiceCardProps) {
-  const dailyUptime = calculateDailyUptime(service.dailyMinutesDown, 90);
+  const startDate = service.startTime ? new Date(service.startTime) : undefined;
+  const dailyUptime = calculateDailyUptime(service.dailyMinutesDown, 90, startDate);
 
   const statusConfig = {
     up: {

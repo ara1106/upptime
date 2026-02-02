@@ -18,6 +18,7 @@ export interface ServiceStatus {
   timeMonth: number;
   timeYear: number;
   dailyMinutesDown: Record<string, number>;
+  startTime?: string;
 }
 
 export interface Incident {
@@ -32,6 +33,20 @@ export interface Incident {
   html_url: string;
 }
 
+async function fetchServiceStartDate(slug: string): Promise<string | undefined> {
+  try {
+    const response = await fetch(
+      `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/history/${slug}.yml`
+    );
+    if (!response.ok) return undefined;
+    const text = await response.text();
+    const match = text.match(/^startTime:\s*(.+)$/m);
+    return match ? match[1].trim() : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 export async function fetchServiceStatuses(): Promise<ServiceStatus[]> {
   const response = await fetch(
     `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/history/summary.json`,
@@ -42,7 +57,17 @@ export async function fetchServiceStatuses(): Promise<ServiceStatus[]> {
     throw new Error("Failed to fetch service statuses");
   }
 
-  return response.json();
+  const services: ServiceStatus[] = await response.json();
+
+  // Fetch start dates from history YAML files in parallel
+  const startDates = await Promise.all(
+    services.map((s) => fetchServiceStartDate(s.slug))
+  );
+  services.forEach((s, i) => {
+    s.startTime = startDates[i];
+  });
+
+  return services;
 }
 
 export async function fetchIncidents(): Promise<Incident[]> {
