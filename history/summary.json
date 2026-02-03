@@ -4,71 +4,79 @@
     "url": "https://kero-ara.com/api/health",
     "icon": "https://status.kero-ara.com/kero-icon.svg",
     "slug": "kero-hub-portal",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 649,
-    "timeDay": 636,
-    "timeWeek": 649,
-    "timeMonth": 649,
-    "timeYear": 649,
-    "dailyMinutesDown": {}
+    "time": 600,
+    "timeDay": 424,
+    "timeWeek": 608,
+    "timeMonth": 600,
+    "timeYear": 600,
+    "dailyMinutesDown": {
+      "2026-02-03": 0
+    }
   },
   {
     "name": "KeroHub Auth",
     "url": "https://kero-ara.com/api/auth/session",
     "icon": "https://status.kero-ara.com/kero-icon.svg",
     "slug": "kero-hub-auth",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 247,
-    "timeDay": 167,
-    "timeWeek": 247,
-    "timeMonth": 247,
-    "timeYear": 247,
-    "dailyMinutesDown": {}
+    "time": 221,
+    "timeDay": 89,
+    "timeWeek": 221,
+    "timeMonth": 221,
+    "timeYear": 221,
+    "dailyMinutesDown": {
+      "2026-02-03": 0
+    }
   },
   {
     "name": "Jellyfin",
     "url": "https://jellyfin.kero-ara.com/health",
     "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg",
     "slug": "jellyfin",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 525,
-    "timeDay": 520,
-    "timeWeek": 525,
-    "timeMonth": 525,
-    "timeYear": 525,
-    "dailyMinutesDown": {}
+    "time": 474,
+    "timeDay": 295,
+    "timeWeek": 477,
+    "timeMonth": 474,
+    "timeYear": 474,
+    "dailyMinutesDown": {
+      "2026-02-03": 0
+    }
   },
   {
     "name": "Jellyseerr",
     "url": "https://jellyseerr.kero-ara.com/api/v1/status",
     "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyseerr.svg",
     "slug": "jellyseerr",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 546,
-    "timeDay": 549,
-    "timeWeek": 546,
-    "timeMonth": 546,
-    "timeYear": 546,
-    "dailyMinutesDown": {}
+    "time": 494,
+    "timeDay": 315,
+    "timeWeek": 487,
+    "timeMonth": 494,
+    "timeYear": 494,
+    "dailyMinutesDown": {
+      "2026-02-03": 0
+    }
   }
 ]
