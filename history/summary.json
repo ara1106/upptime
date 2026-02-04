@@ -5,16 +5,16 @@
     "icon": "https://status.kero-ara.com/kero-icon.svg",
     "slug": "kero-hub-portal",
     "status": "up",
-    "uptime": "99.52%",
+    "uptime": "99.54%",
     "uptimeDay": "96.55%",
     "uptimeWeek": "99.51%",
-    "uptimeMonth": "99.52%",
-    "uptimeYear": "99.52%",
-    "time": 587,
-    "timeDay": 477,
-    "timeWeek": 592,
-    "timeMonth": 587,
-    "timeYear": 587,
+    "uptimeMonth": "99.54%",
+    "uptimeYear": "99.54%",
+    "time": 586,
+    "timeDay": 461,
+    "timeWeek": 590,
+    "timeMonth": 586,
+    "timeYear": 586,
     "dailyMinutesDown": {
       "2026-02-03": 50
     }
@@ -30,11 +30,11 @@
     "uptimeWeek": "99.75%",
     "uptimeMonth": "99.76%",
     "uptimeYear": "99.76%",
-    "time": 212,
-    "timeDay": 104,
-    "timeWeek": 217,
-    "timeMonth": 212,
-    "timeYear": 212,
+    "time": 204,
+    "timeDay": 91,
+    "timeWeek": 191,
+    "timeMonth": 204,
+    "timeYear": 204,
     "dailyMinutesDown": {
       "2026-02-03": 25
     }
@@ -45,16 +45,16 @@
     "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg",
     "slug": "jellyfin",
     "status": "up",
-    "uptime": "99.76%",
+    "uptime": "99.77%",
     "uptimeDay": "98.28%",
     "uptimeWeek": "99.75%",
-    "uptimeMonth": "99.76%",
-    "uptimeYear": "99.76%",
-    "time": 467,
-    "timeDay": 331,
-    "timeWeek": 469,
-    "timeMonth": 467,
-    "timeYear": 467,
+    "uptimeMonth": "99.77%",
+    "uptimeYear": "99.77%",
+    "time": 460,
+    "timeDay": 287,
+    "timeWeek": 444,
+    "timeMonth": 460,
+    "timeYear": 460,
     "dailyMinutesDown": {
       "2026-02-03": 25
     }
@@ -70,11 +70,11 @@
     "uptimeWeek": "99.75%",
     "uptimeMonth": "99.76%",
     "uptimeYear": "99.76%",
-    "time": 957,
-    "timeDay": 1919,
-    "timeWeek": 1003,
-    "timeMonth": 957,
-    "timeYear": 957,
+    "time": 909,
+    "timeDay": 1876,
+    "timeWeek": 982,
+    "timeMonth": 909,
+    "timeYear": 909,
     "dailyMinutesDown": {
       "2026-02-03": 25
     }
