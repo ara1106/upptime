@@ -1,7 +1,7 @@
 url: https://kero-ara.com/api/auth/session
-status: down
-code: 530
-responseTime: 8
-lastUpdated: 2026-02-20T23:12:33.047Z
+status: up
+code: 200
+responseTime: 125
+lastUpdated: 2026-02-20T23:57:46.869Z
 startTime: 2026-01-27T18:22:37.090Z
 generator: Upptime <https://github.com/upptime/upptime>
