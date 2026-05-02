@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "RemLab Status",
   description: "Service status and uptime monitoring for RemLab infrastructure",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/rem-icon.png",
   },
 };
 

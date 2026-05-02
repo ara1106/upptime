@@ -15,6 +15,34 @@ import {
 } from "@/lib/api";
 import { getOverallStatus } from "@/lib/utils";
 
+// Slug → category. Slugs are derived from service `name` in .upptimerc.yml
+// via lodash kebab-case (e.g. "SSO Login" → "sso-login", "KeroHub" → "kero-hub").
+// Source of truth for groups: configs/services-registry.yaml in the remlab monorepo.
+const SERVICE_GROUPS: Record<string, string> = {
+  "kero-hub": "Identity",
+  "sso-login": "Identity",
+  "password-vault": "Identity",
+  jellyfin: "Media",
+  jellyseerr: "Media",
+  "kero-place": "Community",
+  "community-forum": "Community",
+  opengist: "Dev",
+};
+
+const GROUP_ORDER = ["Identity", "Media", "Community", "Dev", "Other"];
+
+function groupServices(services: ServiceStatus[]): Array<[string, ServiceStatus[]]> {
+  const buckets = new Map<string, ServiceStatus[]>();
+  for (const svc of services) {
+    const group = SERVICE_GROUPS[svc.slug] ?? "Other";
+    if (!buckets.has(group)) buckets.set(group, []);
+    buckets.get(group)!.push(svc);
+  }
+  return GROUP_ORDER
+    .filter((g) => buckets.has(g))
+    .map((g) => [g, buckets.get(g)!] as [string, ServiceStatus[]]);
+}
+
 export default function StatusPage() {
   const [services, setServices] = useState<ServiceStatus[]>([]);
   const [incidents, setIncidents] = useState<Incident[]>([]);
@@ -55,21 +83,11 @@ export default function StatusPage() {
       {/* Header */}
       <header className="mb-6 sm:mb-8">
         <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
-          <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center shrink-0">
-            <svg
-              className="h-5 w-5 sm:h-6 sm:w-6 text-foreground"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-              />
-            </svg>
-          </div>
+          <img
+            src="/rem-icon.png"
+            alt=""
+            className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg shrink-0"
+          />
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">RemLab Status</h1>
         </div>
         <p className="text-muted text-sm sm:text-base">
@@ -114,18 +132,34 @@ export default function StatusPage() {
         )}
       </section>
 
-      {/* Services Grid */}
-      <section className="mb-6 sm:mb-8">
-        <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Services</h2>
-        <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
-          {loading
-            ? Array.from({ length: 4 }).map((_, i) => (
+      {/* Services, grouped by category */}
+      <section className="mb-6 sm:mb-8 space-y-6 sm:space-y-8">
+        {loading ? (
+          <div>
+            <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Services</h2>
+            <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
+              {Array.from({ length: 4 }).map((_, i) => (
                 <ServiceCardSkeleton key={i} />
-              ))
-            : services.map((service) => (
-                <ServiceCard key={service.slug} service={service} />
               ))}
-        </div>
+            </div>
+          </div>
+        ) : (
+          groupServices(services).map(([group, groupItems]) => (
+            <div key={group}>
+              <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-baseline gap-2">
+                <span>{group}</span>
+                <span className="text-xs font-normal text-muted">
+                  {groupItems.length}
+                </span>
+              </h2>
+              <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
+                {groupItems.map((service) => (
+                  <ServiceCard key={service.slug} service={service} />
+                ))}
+              </div>
+            </div>
+          ))
+        )}
       </section>
 
       {/* Incidents */}

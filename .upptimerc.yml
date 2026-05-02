@@ -1,66 +1,59 @@
-# Upptime Configuration - External Status Page Failover
-# This config monitors publicly accessible services from GitHub Actions
-#
-# Note: The status page is built with a custom Next.js frontend (see src/)
-# Documentation: https://upptime.js.org/docs/
+# Upptime Configuration - Auto-generated from configs/services-registry.yaml
+# DO NOT EDIT DIRECTLY - Run scripts/generate-status-configs.sh to regenerate
+# Copy this file to the ara1106/upptime repository
 
 owner: ara1106
 repo: upptime
 
-# Disable the default Upptime status page - we use a custom Next.js frontend
+sites:
+  - name: "SSO Login"
+    url: "https://auth.kero-ara.com/-/health/ready/"
+
+  - name: "Jellyfin"
+    url: "https://jellyfin.kero-ara.com/health"
+
+  - name: "Jellyseerr"
+    url: "https://jellyseerr.kero-ara.com/api/v1/status"
+
+  - name: "KeroHub"
+    url: "https://kero-ara.com/api/health"
+
+  - name: "Password Vault"
+    url: "https://vault.kero-ara.com/alive"
+
+  - name: "Kero Place"
+    url: "https://place.kero-ara.com/"
+
+  - name: "Community Forum"
+    url: "https://community.kero-ara.com/srv/status"
+
+  - name: "Opengist"
+    url: "https://paste.kero-ara.com/healthcheck"
+
 status-website:
   cname: status.kero-ara.com
+  logoUrl: https://kero-ara.com/icon.svg
+  name: RemLab Status
+  introTitle: "**RemLab Status**"
+  introMessage: Current status of RemLab services. This page is hosted externally and remains available even when the main infrastructure is down.
+  theme: dark
+  navbar:
+    - title: KeroHub
+      href: https://kero-ara.com
 
-# Only monitor publicly accessible endpoints
-# Internal services (.rem.home) are monitored by Gatus
-sites:
-  # Identity & Portal
-  - name: KeroHub Portal
-    url: https://kero-ara.com/api/health
-    icon: https://status.kero-ara.com/kero-icon.svg
-
-  - name: KeroHub Auth
-    url: https://kero-ara.com/api/auth/session
-    icon: https://status.kero-ara.com/kero-icon.svg
-    expectedStatusCodes:
-      - 200
-      - 401  # Unauthorized is expected without session
-
-  # Media Services (Public)
-  - name: Jellyfin
-    url: https://jellyfin.kero-ara.com/health
-    icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg
-
-  - name: Jellyseerr
-    url: https://jellyseerr.kero-ara.com/api/v1/status
-    icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyseerr.svg
-
-# Check every 5 minutes via GitHub Actions
 workflowSchedule:
-  uptime: "*/5 * * * *"
-  responseTime: "*/5 * * * *"
-  staticSite: "0 0 * * *"
-  summary: "0 0 * * *"
+  uptime:
+    - cron: "*/5 * * * *"
+  response:
+    - cron: "*/5 * * * *"
+  summary:
+    - cron: "0 0 * * *"
 
-# Commits configuration
-commitMessages:
-  commitMessagePrefix: "[status]"
-  statusChangeCommitMessage: "$PREFIX $NAME is $STATUS"
-  startCommitMessage: "$PREFIX Starting status monitoring"
-  readmeCommitMessage: "$PREFIX Update README"
-
-# I18n - cleaner labels
 i18n:
   activeIncidents: Active Incidents
-  allSystemsOperational: All systems operational
+  allSystemsOperational: All Systems Operational
   incidentReport: Incident Report
-  activeMaintenances: Scheduled Maintenance
-  scheduledMaintenances: Upcoming Maintenance
-  noMaintenances: No scheduled maintenance
-  up: Operational
-  down: Down
-  degraded: Degraded
 
-# User/org info
-user:
-  repo: ara1106/remlab-configs
+commitMessages:
+  statusChange: "🔔 $SITE_NAME is $STATUS"
+  commitSummaryTitle: "📊 Daily status update"
