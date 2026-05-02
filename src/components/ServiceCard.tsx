@@ -64,24 +64,28 @@ function DefaultServiceIcon({ name }: { name: string }) {
   );
 }
 
-function ServiceIcon({ icon, name }: { icon?: string; name: string }) {
+// Per-slug icon overrides for cases where Upptime's auto-fetched favicon is
+// wrong. Upptime defaults `icon` to https://icons.duckduckgo.com/ip3/<host>.ico,
+// which works fine for most services — Pxls, Discourse, Jellyfin, Authentik,
+// Vaultwarden, Opengist all serve good favicons. The exception is KeroHub:
+// its monitored URL is `kero-ara.com/api/health`, which 301s to hub.kero-ara.com
+// whose favicon currently isn't the Keroppi mark. Force the local kero-icon.svg
+// for that service instead.
+const ICON_OVERRIDES: Record<string, string> = {
+  "kero-hub": "/kero-icon.svg",
+};
+
+function ServiceIcon({ icon, name, slug }: { icon?: string; name: string; slug: string }) {
   const [error, setError] = useState(false);
+  const resolved = ICON_OVERRIDES[slug] ?? icon;
 
-  // Upptime auto-fills `icon` with a DuckDuckGo favicon proxy URL when the
-  // service has no explicit icon. That returns whatever the host serves —
-  // for kero-ara.com that's KeroHub's actual favicon, which doesn't match
-  // our intended branding (e.g. "KeroHub" should render the Keroppi mark,
-  // not whatever favicon hub.kero-ara.com happens to serve today). Skip the
-  // auto-icon and fall through to the curated DefaultServiceIcon.
-  const isAutoIcon = !!icon && icon.includes("icons.duckduckgo.com");
-
-  if (!icon || isAutoIcon || error) {
+  if (!resolved || error) {
     return <DefaultServiceIcon name={name} />;
   }
 
   return (
     <img
-      src={icon}
+      src={resolved}
       alt=""
       className="w-full h-full rounded object-contain"
       onError={() => setError(true)}
@@ -125,7 +129,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
             className="shrink-0 flex items-center justify-center rounded-lg bg-background/50"
             style={{ width: "2.5rem", height: "2.5rem", padding: "0.375rem" }}
           >
-            <ServiceIcon icon={service.icon} name={service.name} />
+            <ServiceIcon icon={service.icon} name={service.name} slug={service.slug} />
           </div>
           <div className="min-w-0">
             <h3 className="font-semibold text-base truncate">{service.name}</h3>
