@@ -43,8 +43,10 @@ function DefaultServiceIcon({ name }: { name: string }) {
   // Choose icon based on service name
   const iconPath = lowerName.includes("jellyfin")
     ? "M19.5 7.5l-1.5 1.5-4-4-4 4-1.5-1.5 5.5-5.5 5.5 5.5zM4.5 16.5l1.5-1.5 4 4 4-4 1.5 1.5-5.5 5.5-5.5-5.5z" // Media icon
-    : lowerName.includes("auth")
+    : lowerName.includes("auth") || lowerName.includes("vault") || lowerName.includes("login") || lowerName.includes("password")
     ? "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" // Lock icon
+    : lowerName.includes("forum") || lowerName.includes("community") || lowerName.includes("place")
+    ? "M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h4v4l.586-.586z" // Chat bubble
     : lowerName.includes("request") || lowerName.includes("seerr")
     ? "M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" // Film icon
     : "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"; // Globe icon
@@ -65,7 +67,15 @@ function DefaultServiceIcon({ name }: { name: string }) {
 function ServiceIcon({ icon, name }: { icon?: string; name: string }) {
   const [error, setError] = useState(false);
 
-  if (!icon || error) {
+  // Upptime auto-fills `icon` with a DuckDuckGo favicon proxy URL when the
+  // service has no explicit icon. That returns whatever the host serves —
+  // for kero-ara.com that's KeroHub's actual favicon, which doesn't match
+  // our intended branding (e.g. "KeroHub" should render the Keroppi mark,
+  // not whatever favicon hub.kero-ara.com happens to serve today). Skip the
+  // auto-icon and fall through to the curated DefaultServiceIcon.
+  const isAutoIcon = !!icon && icon.includes("icons.duckduckgo.com");
+
+  if (!icon || isAutoIcon || error) {
     return <DefaultServiceIcon name={name} />;
   }
 
