@@ -90,18 +90,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/kero-ara.com.ico",
     "slug": "kero-hub",
     "status": "down",
-    "uptime": "100.00%",
-    "uptimeDay": "99.99%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
-    "time": 552,
-    "timeDay": 487,
-    "timeWeek": 552,
-    "timeMonth": 552,
-    "timeYear": 552,
+    "uptime": "99.72%",
+    "uptimeDay": "98.08%",
+    "uptimeWeek": "99.72%",
+    "uptimeMonth": "99.72%",
+    "uptimeYear": "99.72%",
+    "time": 565,
+    "timeDay": 550,
+    "timeWeek": 565,
+    "timeMonth": 565,
+    "timeYear": 565,
     "dailyMinutesDown": {
-      "2026-05-09": 0
+      "2026-05-09": 28
     }
   },
   {
