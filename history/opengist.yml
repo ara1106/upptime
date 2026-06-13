@@ -1,7 +1,7 @@
 url: https://paste.kero-ara.com/healthcheck
-status: up
-code: 200
-responseTime: 342
-lastUpdated: 2026-06-12T23:37:05.211Z
+status: down
+code: 404
+responseTime: 428
+lastUpdated: 2026-06-13T12:20:10.398Z
 startTime: 2026-05-02T15:32:31.932Z
 generator: Upptime <https://github.com/upptime/upptime>
