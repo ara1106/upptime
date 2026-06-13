@@ -24,16 +24,17 @@
     "slug": "jellyfin",
     "status": "down",
     "uptime": "98.92%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "99.94%",
     "uptimeYear": "98.92%",
     "time": 581,
-    "timeDay": 420,
-    "timeWeek": 415,
+    "timeDay": 497,
+    "timeWeek": 434,
     "timeMonth": 566,
     "timeYear": 581,
     "dailyMinutesDown": {
+      "2026-06-13": 0,
       "2026-05-29": 25,
       "2026-05-01": 309,
       "2026-04-21": 92,
@@ -168,18 +169,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/paste.kero-ara.com.ico",
     "slug": "opengist",
     "status": "down",
-    "uptime": "100.00%",
-    "uptimeDay": "99.99%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
+    "uptime": "99.87%",
+    "uptimeDay": "94.36%",
+    "uptimeWeek": "99.19%",
+    "uptimeMonth": "99.81%",
+    "uptimeYear": "99.87%",
     "time": 427,
     "timeDay": 385,
     "timeWeek": 381,
     "timeMonth": 413,
     "timeYear": 427,
     "dailyMinutesDown": {
-      "2026-06-13": 0
+      "2026-06-13": 81
     }
   }
 ]
