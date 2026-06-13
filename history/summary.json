@@ -169,15 +169,17 @@
     "slug": "opengist",
     "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 427,
-    "timeDay": 342,
-    "timeWeek": 375,
+    "timeDay": 385,
+    "timeWeek": 381,
     "timeMonth": 413,
     "timeYear": 427,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-06-13": 0
+    }
   }
 ]
