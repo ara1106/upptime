@@ -1,7 +1,7 @@
 url: https://auth.kero-ara.com/-/health/ready/
-status: up
-code: 200
-responseTime: 1314
-lastUpdated: 2026-08-01T23:22:32.913Z
+status: down
+code: 404
+responseTime: 556
+lastUpdated: 2026-08-02T15:43:26.623Z
 startTime: 2026-05-02T15:32:25.821Z
 generator: Upptime <https://github.com/upptime/upptime>
