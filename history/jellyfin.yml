@@ -1,7 +1,7 @@
 url: https://jellyfin.kero-ara.com/health
-status: up
-code: 200
-responseTime: 517
-lastUpdated: 2026-08-11T23:18:31.087Z
+status: down
+code: 403
+responseTime: 406
+lastUpdated: 2026-08-12T23:01:56.340Z
 startTime: 2026-01-27T14:17:34.071Z
 generator: Upptime <https://github.com/upptime/upptime>
