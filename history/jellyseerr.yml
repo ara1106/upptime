@@ -1,7 +1,7 @@
 url: https://jellyseerr.kero-ara.com/api/v1/status
-status: down
-code: 403
-responseTime: 355
-lastUpdated: 2026-08-12T23:01:58.431Z
+status: up
+code: 200
+responseTime: 395
+lastUpdated: 2026-08-12T23:17:49.814Z
 startTime: 2026-01-27T14:17:34.899Z
 generator: Upptime <https://github.com/upptime/upptime>
