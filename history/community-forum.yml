@@ -1,7 +1,7 @@
 url: https://community.kero-ara.com/srv/status
-status: down
-code: 530
-responseTime: 79
-lastUpdated: 2026-08-24T09:06:52.500Z
+status: up
+code: 200
+responseTime: 463
+lastUpdated: 2026-08-24T12:14:10.380Z
 startTime: 2026-05-02T15:32:30.965Z
 generator: Upptime <https://github.com/upptime/upptime>
