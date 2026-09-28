@@ -1,7 +1,7 @@
 url: https://kero-ara.com/api/health
-status: up
-code: 200
-responseTime: 578
-lastUpdated: 2026-09-27T23:15:33.290Z
+status: down
+code: 530
+responseTime: 163
+lastUpdated: 2026-09-28T18:00:18.387Z
 startTime: 2026-05-02T15:32:27.862Z
 generator: Upptime <https://github.com/upptime/upptime>
