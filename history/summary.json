@@ -4,17 +4,17 @@
     "url": "https://auth.kero-ara.com/-/health/ready/",
     "icon": "https://icons.duckduckgo.com/ip3/auth.kero-ara.com.ico",
     "slug": "sso-login",
-    "status": "down",
-    "uptime": "99.35%",
-    "uptimeDay": "99.87%",
-    "uptimeWeek": "99.98%",
-    "uptimeMonth": "99.93%",
-    "uptimeYear": "99.35%",
-    "time": 550,
-    "timeDay": 520,
-    "timeWeek": 720,
-    "timeMonth": 612,
-    "timeYear": 550,
+    "status": "up",
+    "uptime": "99.34%",
+    "uptimeDay": "98.24%",
+    "uptimeWeek": "99.75%",
+    "uptimeMonth": "99.88%",
+    "uptimeYear": "99.34%",
+    "time": 551,
+    "timeDay": 562,
+    "timeWeek": 712,
+    "timeMonth": 615,
+    "timeYear": 551,
     "dailyMinutesDown": {
       "2026-06-13": 171,
       "2026-07-05": 135,
@@ -30,7 +30,7 @@
       "2026-08-24": 187,
       "2026-08-25": 262,
       "2026-09-28": 28,
-      "2026-10-07": 2
+      "2026-10-07": 25
     }
   },
   {
@@ -38,15 +38,15 @@
     "url": "https://jellyfin.kero-ara.com/health",
     "icon": "https://icons.duckduckgo.com/ip3/jellyfin.kero-ara.com.ico",
     "slug": "jellyfin",
-    "status": "down",
-    "uptime": "98.92%",
-    "uptimeDay": "99.89%",
-    "uptimeWeek": "99.98%",
-    "uptimeMonth": "99.93%",
-    "uptimeYear": "98.92%",
+    "status": "up",
+    "uptime": "98.91%",
+    "uptimeDay": "98.25%",
+    "uptimeWeek": "99.75%",
+    "uptimeMonth": "99.88%",
+    "uptimeYear": "98.91%",
     "time": 543,
-    "timeDay": 484,
-    "timeWeek": 661,
+    "timeDay": 504,
+    "timeWeek": 648,
     "timeMonth": 551,
     "timeYear": 543,
     "dailyMinutesDown": {
@@ -82,7 +82,7 @@
       "2026-08-24": 187,
       "2026-08-25": 262,
       "2026-09-28": 27,
-      "2026-10-07": 2
+      "2026-10-07": 25
     }
   },
   {
@@ -90,16 +90,16 @@
     "url": "https://jellyseerr.kero-ara.com/api/v1/status",
     "icon": "https://icons.duckduckgo.com/ip3/jellyseerr.kero-ara.com.ico",
     "slug": "jellyseerr",
-    "status": "down",
-    "uptime": "99.31%",
-    "uptimeDay": "99.91%",
-    "uptimeWeek": "99.99%",
-    "uptimeMonth": "99.93%",
-    "uptimeYear": "99.31%",
+    "status": "up",
+    "uptime": "99.30%",
+    "uptimeDay": "98.27%",
+    "uptimeWeek": "99.75%",
+    "uptimeMonth": "99.88%",
+    "uptimeYear": "99.30%",
     "time": 498,
-    "timeDay": 433,
-    "timeWeek": 423,
-    "timeMonth": 423,
+    "timeDay": 461,
+    "timeWeek": 433,
+    "timeMonth": 429,
     "timeYear": 498,
     "dailyMinutesDown": {
       "2026-02-03": 25,
@@ -126,7 +126,7 @@
       "2026-08-24": 187,
       "2026-08-25": 262,
       "2026-09-28": 27,
-      "2026-10-07": 1
+      "2026-10-07": 25
     }
   },
   {
@@ -134,16 +134,16 @@
     "url": "https://kero-ara.com/api/health",
     "icon": "https://icons.duckduckgo.com/ip3/kero-ara.com.ico",
     "slug": "kero-hub",
-    "status": "down",
-    "uptime": "99.30%",
-    "uptimeDay": "99.92%",
-    "uptimeWeek": "99.99%",
-    "uptimeMonth": "99.94%",
-    "uptimeYear": "99.30%",
+    "status": "up",
+    "uptime": "99.29%",
+    "uptimeDay": "98.28%",
+    "uptimeWeek": "99.75%",
+    "uptimeMonth": "99.88%",
+    "uptimeYear": "99.29%",
     "time": 597,
-    "timeDay": 646,
-    "timeWeek": 575,
-    "timeMonth": 539,
+    "timeDay": 619,
+    "timeWeek": 574,
+    "timeMonth": 541,
     "timeYear": 597,
     "dailyMinutesDown": {
       "2026-05-09": 28,
@@ -163,7 +163,7 @@
       "2026-08-24": 187,
       "2026-08-25": 262,
       "2026-09-28": 27,
-      "2026-10-07": 1
+      "2026-10-07": 25
     }
   },
   {
@@ -171,17 +171,17 @@
     "url": "https://vault.kero-ara.com/alive",
     "icon": "https://icons.duckduckgo.com/ip3/vault.kero-ara.com.ico",
     "slug": "password-vault",
-    "status": "down",
-    "uptime": "99.37%",
-    "uptimeDay": "99.94%",
-    "uptimeWeek": "99.99%",
-    "uptimeMonth": "99.94%",
-    "uptimeYear": "99.37%",
-    "time": 477,
-    "timeDay": 447,
-    "timeWeek": 437,
-    "timeMonth": 428,
-    "timeYear": 477,
+    "status": "up",
+    "uptime": "99.36%",
+    "uptimeDay": "98.29%",
+    "uptimeWeek": "99.76%",
+    "uptimeMonth": "99.88%",
+    "uptimeYear": "99.36%",
+    "time": 478,
+    "timeDay": 467,
+    "timeWeek": 445,
+    "timeMonth": 433,
+    "timeYear": 478,
     "dailyMinutesDown": {
       "2026-06-13": 171,
       "2026-07-05": 109,
@@ -196,7 +196,7 @@
       "2026-08-24": 187,
       "2026-08-25": 262,
       "2026-09-28": 27,
-      "2026-10-07": 1
+      "2026-10-07": 25
     }
   },
   {
@@ -204,16 +204,16 @@
     "url": "https://place.kero-ara.com/",
     "icon": "https://icons.duckduckgo.com/ip3/place.kero-ara.com.ico",
     "slug": "kero-place",
-    "status": "down",
-    "uptime": "99.40%",
-    "uptimeDay": "99.95%",
-    "uptimeWeek": "99.99%",
-    "uptimeMonth": "99.94%",
-    "uptimeYear": "99.40%",
+    "status": "up",
+    "uptime": "99.39%",
+    "uptimeDay": "98.31%",
+    "uptimeWeek": "99.76%",
+    "uptimeMonth": "99.88%",
+    "uptimeYear": "99.39%",
     "time": 574,
-    "timeDay": 561,
-    "timeWeek": 566,
-    "timeMonth": 552,
+    "timeDay": 581,
+    "timeWeek": 572,
+    "timeMonth": 556,
     "timeYear": 574,
     "dailyMinutesDown": {
       "2026-06-13": 125,
@@ -229,7 +229,7 @@
       "2026-08-24": 187,
       "2026-08-25": 262,
       "2026-09-28": 27,
-      "2026-10-07": 1
+      "2026-10-07": 24
     }
   },
   {
@@ -237,16 +237,16 @@
     "url": "https://community.kero-ara.com/srv/status",
     "icon": "https://icons.duckduckgo.com/ip3/community.kero-ara.com.ico",
     "slug": "community-forum",
-    "status": "down",
-    "uptime": "99.38%",
-    "uptimeDay": "99.97%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "99.94%",
-    "uptimeYear": "99.38%",
+    "status": "up",
+    "uptime": "99.37%",
+    "uptimeDay": "98.32%",
+    "uptimeWeek": "99.76%",
+    "uptimeMonth": "99.88%",
+    "uptimeYear": "99.37%",
     "time": 466,
-    "timeDay": 437,
-    "timeWeek": 414,
-    "timeMonth": 406,
+    "timeDay": 463,
+    "timeWeek": 425,
+    "timeMonth": 413,
     "timeYear": 466,
     "dailyMinutesDown": {
       "2026-06-13": 124,
@@ -262,7 +262,7 @@
       "2026-08-24": 187,
       "2026-08-25": 262,
       "2026-09-28": 27,
-      "2026-10-07": 0
+      "2026-10-07": 24
     }
   },
   {
@@ -270,16 +270,16 @@
     "url": "https://paste.kero-ara.com/healthcheck",
     "icon": "https://icons.duckduckgo.com/ip3/paste.kero-ara.com.ico",
     "slug": "opengist",
-    "status": "down",
-    "uptime": "99.26%",
-    "uptimeDay": "99.98%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "99.94%",
-    "uptimeYear": "99.26%",
+    "status": "up",
+    "uptime": "99.25%",
+    "uptimeDay": "98.33%",
+    "uptimeWeek": "99.76%",
+    "uptimeMonth": "99.89%",
+    "uptimeYear": "99.25%",
     "time": 454,
-    "timeDay": 411,
-    "timeWeek": 425,
-    "timeMonth": 419,
+    "timeDay": 449,
+    "timeWeek": 436,
+    "timeMonth": 426,
     "timeYear": 454,
     "dailyMinutesDown": {
       "2026-06-13": 345,
@@ -297,7 +297,7 @@
       "2026-08-24": 187,
       "2026-08-25": 262,
       "2026-09-28": 26,
-      "2026-10-07": 0
+      "2026-10-07": 24
     }
   }
 ]
