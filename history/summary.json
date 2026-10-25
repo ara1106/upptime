@@ -284,16 +284,16 @@
     "url": "https://paste.kero-ara.com/healthcheck",
     "icon": "https://icons.duckduckgo.com/ip3/paste.kero-ara.com.ico",
     "slug": "opengist",
-    "status": "down",
+    "status": "up",
     "uptime": "99.31%",
-    "uptimeDay": "99.98%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "99.78%",
+    "uptimeDay": "99.38%",
+    "uptimeWeek": "99.91%",
+    "uptimeMonth": "99.76%",
     "uptimeYear": "99.31%",
     "time": 455,
-    "timeDay": 478,
-    "timeWeek": 453,
-    "timeMonth": 447,
+    "timeDay": 493,
+    "timeWeek": 460,
+    "timeMonth": 449,
     "timeYear": 455,
     "dailyMinutesDown": {
       "2026-06-13": 345,
@@ -314,7 +314,7 @@
       "2026-10-07": 24,
       "2026-10-08": 15,
       "2026-10-12": 30,
-      "2026-10-25": 0
+      "2026-10-25": 9
     }
   }
 ]
