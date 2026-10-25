@@ -12,23 +12,25 @@ sites:
   - name: "Jellyfin"
     url: "https://jellyfin.kero-ara.com/health"
 
-  - name: "Jellyseerr"
-    url: "https://jellyseerr.kero-ara.com/api/v1/status"
+  - name: "Seerr"
+    url: "https://seerr.kero-ara.com/"
+    expectedStatusCodes: [302]
+    maxRedirects: 0
+
+  - name: "Kavita"
+    url: "https://read.kero-ara.com/api/health"
+
+  - name: "Audiobookshelf"
+    url: "https://audiobooks.kero-ara.com/healthcheck"
 
   - name: "KeroHub"
     url: "https://kero-ara.com/api/health"
-
-  - name: "Password Vault"
-    url: "https://vault.kero-ara.com/alive"
 
   - name: "Kero Place"
     url: "https://place.kero-ara.com/"
 
   - name: "Community Forum"
     url: "https://community.kero-ara.com/srv/status"
-
-  - name: "Opengist"
-    url: "https://paste.kero-ara.com/healthcheck"
 
 status-website:
   cname: status.kero-ara.com
