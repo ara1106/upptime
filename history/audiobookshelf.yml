@@ -1,7 +1,7 @@
 url: https://audiobooks.kero-ara.com/healthcheck
-status: down
-code: 403
-responseTime: 405
-lastUpdated: 2026-10-26T02:02:20.417Z
+status: up
+code: 200
+responseTime: 541
+lastUpdated: 2026-10-26T02:33:46.412Z
 startTime: 2026-10-25T17:15:43.801Z
 generator: Upptime <https://github.com/upptime/upptime>
